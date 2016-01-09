@@ -92,17 +92,17 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $workspace1 "1: Terminals  "
-set $workspace2 "2: Firefox  "
-set $workspace3 "3: Comms  "
-set $workspace4 "4: Coding  "
-set $workspace5 "5: Coding  "
-set $workspace6 "6: Random  "
-set $workspace7 "7: Random  "
-set $workspace8 "8: Games  "
-set $workspace9 "9: Plex  "
-set $workspace10 "10: Music  "
-set $workspace11 "11: Study  "
+set $workspace1 "1: Terminals 一 "
+set $workspace2 "2: Firefox 二 "
+set $workspace3 "3: Comms 三 "
+set $workspace4 "4: Coding 四 "
+set $workspace5 "5: Coding 五 "
+set $workspace6 "6: Coding 六 "
+set $workspace7 "7: Random 七 "
+set $workspace8 "8: Games 八 "
+set $workspace9 "9: Plex 九 "
+set $workspace10 "10: Music 十 "
+set $workspace11 "11: Study 十一 "
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -221,15 +221,24 @@ bar {
 
 
 
-#################### extra binds  #############################
+## restart i3 na adden met mod shift r ##
+#################### CUSTOM BINDS #############################
 bindsym $mod+shift+x exec sh /home/eksit/Scripts/lock3.sh
 
 bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 bindsym Mod1+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 
+# Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+##bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+##bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Touchpad controls
+##bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -237,6 +246,11 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+
+######### standard startup programma's ########
+## exec_always load ook na een reload
+
+#load wallpaper altijd
 exec_always feh --bg-scale /home/eksit/Pictures/Wallpapers/prettyscene.jpg
 exec spotify
 exec firefox

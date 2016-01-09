@@ -85,4 +85,4 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias androidstudio="/home/eksit/Programs/android-studio/bin/studio.sh"
-alias intellij="/home/eksit/Programs/idea-intellij/bin/idea.sh"
+alias intelij="/home/eksit/Programs/idea-intellij/bin/idea.sh"
