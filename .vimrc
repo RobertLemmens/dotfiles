@@ -15,17 +15,42 @@ set laststatus=2
 set noshowmode
 syntax on
 
+set undodir=~/.vimdid
+set undofile
+
 if empty(glob('~/.vim/autoload/plug.vim'))   
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs         
   \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim   
   autocmd VimEnter * PlugInstall | source $MYVIMRC 
 endif
 
+" No arrow keys --- force yourself to use the home row
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+inoremap <C-j> <Esc>
+vnoremap <C-j> <Esc>
+inoremap <C-c> <Esc>
+vnoremap <C-c> <Esc>
+
+" Left and right can switch buffers
+nnoremap <left> :bp<CR>
+nnoremap <right> :bn<CR>
+
+" <leader><leader> toggles between buffers
+nnoremap <leader><leader> <c-^>
 
 call plug#begin('~/.vim/plugged')
 " Code plugins
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ap/vim-css-color'
+Plug 'alvan/vim-closetag'
+Plug 'mattn/emmet-vim'
+Plug 'cespare/vim-toml'
 
 " Layout and scheme plugins
 Plug 'itchyny/lightline.vim'
@@ -36,6 +61,10 @@ Plug 'joshdick/onedark.vim'
 " utility and command plugins
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'andymass/vim-matchup'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter'
   
 call plug#end()
 
@@ -210,6 +239,11 @@ nmap <silent> <leader>gt <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation) 
 nmap <silent> <leader>gr <Plug>(coc-references)
 
+" Custom hotkeys
+nmap <C-p> :Files<CR>
+nmap <C-b> :Buffers<CR>
+nmap <leader>w :W<CR>
+
 " Lightline stuff
 let g:lightline = {
     \ 'colorscheme':'onedark',
@@ -232,3 +266,7 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
+
+
+" Autoclose setup
+let g:closetag_filenames = '*.html, *.vue'
