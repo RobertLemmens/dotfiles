@@ -242,7 +242,7 @@ nmap <silent> <leader>gr <Plug>(coc-references)
 " Custom hotkeys
 nmap <C-p> :Files<CR>
 nmap <C-b> :Buffers<CR>
-nmap <leader>w :W<CR>
+nmap <leader>w :w<CR>
 
 " Lightline stuff
 let g:lightline = {
